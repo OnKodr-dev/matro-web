@@ -1,6 +1,7 @@
 export default function Filters({
   query, setQuery,
-  categories, selectedCats, setSelectedCats
+  categories, selectedCats, setSelectedCats,
+  sortBy, setSortBy
 }) {
   return (
     <section className="flex flex-col gap-3 rounded-2xl bg-emerald-200 p-4">
@@ -11,6 +12,22 @@ export default function Filters({
           placeholder="Hledat produkty..."
           className="flex-1 rounded-xl bg-white px-3 py-2 text-sm text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-300"
         />
+      </div>
+      <div className="flex items-center gap-3">
+        <label className="text-xs uppercase tracking-wide text-black whitespace-nowrap">
+          Řazení
+        </label>
+
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="rounded-xl bg-white px-3 py-2 text-sm text-gray-900 border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-300"
+        >
+          <option value="relevance">Relevance</option>
+          <option value="name-asc">Název A–Z</option>
+          <option value="price-asc">Cena ↑</option>
+          <option value="price-desc">Cena ↓</option>
+        </select>
       </div>
 
       {/* Kategorie */}

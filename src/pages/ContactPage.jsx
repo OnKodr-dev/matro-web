@@ -1,7 +1,7 @@
 // src/pages/ContactPage.jsx
 export default function ContactPage() {
     return (
-      <div className="min-h-screen bg-white text-black">
+      <div className="bg-white text-black">
         <div className="mx-auto max-w-3xl px-4 py-16">
           <h1 className="text-3xl font-extrabold text-black mb-6 pb-2">
             Kontakt

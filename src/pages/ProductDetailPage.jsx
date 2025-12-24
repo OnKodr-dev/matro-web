@@ -24,24 +24,6 @@ export default function ProductDetailPage() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* Hlavička */}
-      <header className="sticky top-0 z-40 bg-white/75 backdrop-blur border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Link to="/" className="h-9 w-9 rounded-xl bg-emerald-500 block" />
-            <div>
-              <p className="text-xs uppercase tracking-wider text-gray-500">Matro</p>
-              <h1 className="text-lg font-bold">Detail produktu</h1>
-            </div>
-          </div>
-          <a
-            href="/#contact"
-            className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700 hover:bg-emerald-100"
-          >
-            Poptat řešení
-          </a>
-        </div>
-      </header>
 
       {/* Obsah */}
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
@@ -87,10 +69,6 @@ export default function ProductDetailPage() {
           </ul>
         </section>
       </main>
-
-      <footer className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 text-sm text-gray-500">
-        © {new Date().getFullYear()} Matro.cz
-      </footer>
     </div>
   )
 }
