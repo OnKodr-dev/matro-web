@@ -1,7 +1,7 @@
 // src/pages/AboutPage.jsx
 export default function AboutPage() {
     return (
-      <div className="min-h-screen bg-white text-gray-800">
+      <div className="bg-white text-gray-800">
         <div className="mx-auto max-w-3xl px-4 py-16">
           <h1 className="text-3xl font-extrabold text-black mb-6 pb-2">
             O společnosti

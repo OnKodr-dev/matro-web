@@ -10,7 +10,7 @@ const czCurrency = (value) =>
 export default function ProductCatalogPage() {
   const [query, setQuery] = useState("");
   const [selectedCats, setSelectedCats] = useState([]);
-  const [price, setPrice] = useState({ min: 0, max: 999999 });
+  const [price, _setPrice] = useState({ min: 0, max: 999999 });
   const [sortBy, setSortBy] = useState("relevance");
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(null);
@@ -36,9 +36,6 @@ export default function ProductCatalogPage() {
       case "price-desc":
         items.sort((a, b) => b.price - a.price);
         break;
-      case "rating-desc":
-        items.sort((a, b) => b.rating - a.rating);
-        break;
       case "name-asc":
         items.sort((a, b) => a.name.localeCompare(b.name, "cs"));
         break;
@@ -46,13 +43,13 @@ export default function ProductCatalogPage() {
         if (query.trim()) {
           const q = query.toLowerCase();
           items.sort((a, b) => {
-            const an = a.name.toLowerCase().includes(q) ? 1 : 0;
-            const bn = b.name.toLowerCase().includes(q) ? 1 : 0;
-            if (an !== bn) return bn - an;
-            return b.rating - a.rating;
+            const aName = a.name.toLowerCase().includes(q) ? 1 : 0;
+            const bName = b.name.toLowerCase().includes(q) ? 1 : 0;
+            if (aName !== bName) return bName - aName;
+            return a.name.localeCompare(b.name, "cs");
           });
         } else {
-          items.sort((a, b) => b.rating - a.rating);
+          items.sort((a, b) => a.name.localeCompare(b.name, "cs"));
         }
     }
     return items;
@@ -64,7 +61,7 @@ export default function ProductCatalogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="bg-white text-gray-900">
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <Filters
           query={query}
@@ -72,8 +69,6 @@ export default function ProductCatalogPage() {
           categories={CATEGORIES}
           selectedCats={selectedCats}
           setSelectedCats={setSelectedCats}
-          price={price}
-          setPrice={setPrice}
           sortBy={sortBy}
           setSortBy={setSortBy}
         />
@@ -89,10 +84,6 @@ export default function ProductCatalogPage() {
           )}
         </div>
       </main>
-
-      <footer className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 text-sm text-gray-500">
-        © {new Date().getFullYear()} Matro.cz – katalog produktů (bez nákupu online)
-      </footer>
 
       <Modal open={open} onClose={() => setOpen(false)} title={active?.name}>
         {active && (
