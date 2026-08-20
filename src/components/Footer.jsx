@@ -10,9 +10,11 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 border-b border-white/12 pb-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_0.7fr_0.9fr]">
           <div>
-            <div className="inline-flex rounded-xl bg-[#f6f2e8] px-4 py-3">
-              <img src={matroLogo} alt="Matro s.r.o." className="h-9 w-auto" />
-            </div>
+            <img
+              src={matroLogo}
+              alt="Matro s.r.o."
+              className="h-10 w-auto brightness-0 invert opacity-90"
+            />
             <p className="mt-5 max-w-sm text-sm leading-6 text-white/65">{t("footerTagline")}</p>
           </div>
 
