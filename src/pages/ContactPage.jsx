@@ -1,54 +1,57 @@
-// src/pages/ContactPage.jsx
+import useLanguage from "../hooks/useLanguage"
+import PageIntro from "../components/PageIntro"
+
 export default function ContactPage() {
-    return (
-      <div className="bg-white text-black">
-        <div className="mx-auto max-w-3xl px-4 py-16">
-          <h1 className="text-3xl font-extrabold text-black mb-6 pb-2">
-            Kontakt
-          </h1>
-  
-          <div className="space-y-5 text-lg leading-relaxed">
-            <p className="font-semibold">MATRO Praha, s.r.o.</p>
-            <p>
-              Neklanova 107/22 <br />
-              128 00 Praha 2 – Vyšehrad
-            </p>
-  
-            <p>
-              <span className="font-medium">IČO:</span> 27564541 <br />
-              <span className="font-medium">DIČ:</span> CZ27564541
-            </p>
-  
-            <div>
-              <p className="font-medium">Tel./Fax:</p>
-              <p className="ml-4">
-                +420 224 917 428 <br />
-                +420 267 911 082
-              </p>
+  const { t } = useLanguage()
+  const contacts = [
+    ["01", t("phone"), t("placeholderPhone"), t("availability")],
+    ["02", t("email"), t("placeholderEmail"), "B2B / wholesale"],
+    ["03", t("address"), t("placeholderAddress"), "Praha, Česká republika"],
+  ]
+
+  return (
+    <main id="kontakt" className="bg-[#f6f2e8] px-4 py-8 text-[#173f35] sm:px-6 sm:py-12 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <PageIntro
+          eyebrow={t("contactEyebrow")}
+          title={t("contactTitle")}
+          lead={t("contactLead")}
+          metric="B2B"
+          metricLabel="MATRO Praha, s.r.o."
+        />
+
+        <section className="grid gap-px overflow-hidden rounded-[2rem] bg-[#173f35]/10 my-8 lg:grid-cols-3">
+          {contacts.map(([number, label, value, note]) => (
+            <article key={number} className="bg-white/75 p-7 sm:p-8">
+              <span className="text-xs font-black tracking-[0.18em] text-[#c26a45]">{number}</span>
+              <h2 className="mt-6 text-sm font-bold uppercase tracking-[0.14em] text-[#718078]">{label}</h2>
+              <p className="mt-3 text-xl font-semibold text-[#173f35]">{value}</p>
+              <p className="mt-2 text-sm text-[#60736c]">{note}</p>
+            </article>
+          ))}
+        </section>
+
+        <section className="grid gap-8 py-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20 lg:py-16">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#a45d3d]">{t("companyDetails")}</p>
+            <h2 className="mt-4 font-serif text-4xl tracking-[-0.03em]">MATRO Praha, s.r.o.</h2>
+          </div>
+          <dl className="divide-y divide-[#173f35]/10 rounded-[1.75rem] border border-[#173f35]/10 bg-white/55 px-6 sm:px-8">
+            <div className="flex items-center justify-between gap-6 py-5">
+              <dt className="text-sm text-[#60736c]">IČO</dt>
+              <dd className="font-bold">27564541</dd>
             </div>
-  
-            <p>
-              <span className="font-medium">E-mail:</span>{" "}
-              <a href="mailto:matro@matro.cz" className="text-black">
-                matro@matro.cz
-              </a>
-              <br />
-              <span className="font-medium">Web:</span>{" "}
-              <a href="http://www.matro.cz" target="_blank" rel="noreferrer" className="text-black">
-                www.matro.cz
-              </a>
-            </p>
-          </div>
-  
-          <div className="mt-10 p-6 bg-white rounded-2xl">
-            <h2 className="text-xl font-bold text-black mb-3">Jak nás najdete</h2>
-            <p>
-              Sídlo společnosti se nachází v Praze na Vyšehradě. V případě zájmu o osobní schůzku nás prosím
-              kontaktujte předem telefonicky nebo e-mailem.
-            </p>
-          </div>
-        </div>
+            <div className="flex items-center justify-between gap-6 py-5">
+              <dt className="text-sm text-[#60736c]">DIČ / VAT ID</dt>
+              <dd className="font-bold">CZ27564541</dd>
+            </div>
+            <div className="flex items-center justify-between gap-6 py-5">
+              <dt className="text-sm text-[#60736c]">Web</dt>
+              <dd className="font-bold">www.matro.cz</dd>
+            </div>
+          </dl>
+        </section>
       </div>
-    )
-  }
-  
+    </main>
+  )
+}
