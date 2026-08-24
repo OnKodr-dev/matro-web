@@ -67,9 +67,9 @@ export default function ProductCatalogPage() {
   }, [language, productName, query, selectedCats, sortBy])
 
   const benefits = [
-    ["01", t("benefitsBio"), t("benefitsBioText")],
-    ["02", t("benefitsPrice"), t("benefitsPriceText")],
-    ["03", t("benefitsCare"), t("benefitsCareText")],
+    [t("benefitsBio"), t("benefitsBioText")],
+    [t("benefitsPrice"), t("benefitsPriceText")],
+    [t("benefitsCare"), t("benefitsCareText")],
   ]
 
   return (
@@ -80,15 +80,12 @@ export default function ProductCatalogPage() {
             eyebrow={t("heroEyebrow")}
             title={t("heroTitle")}
             lead={t("heroText")}
-            metric={PRODUCTS.length}
-            metricLabel={t("catalogItems")}
           />
 
           <section className="grid gap-px overflow-hidden rounded-[1.75rem] bg-[#173f35]/10 my-6 sm:grid-cols-3 sm:my-8">
-            {benefits.map(([number, title, description]) => (
-              <div key={number} className="bg-[#fbf9f3] p-6 sm:p-7">
-                <span className="text-xs font-black tracking-[0.18em] text-[#c26a45]">{number}</span>
-                <h2 className="mt-4 text-lg font-semibold text-[#173f35]">{title}</h2>
+            {benefits.map(([title, description]) => (
+              <div key={title} className="bg-[#fbf9f3] p-6 sm:p-7">
+                <h2 className="text-lg font-semibold text-[#173f35]">{title}</h2>
                 <p className="mt-2 text-sm leading-6 text-[#60736c]">{description}</p>
               </div>
             ))}

@@ -4,9 +4,9 @@ import PageIntro from "../components/PageIntro"
 export default function ContactPage() {
   const { t } = useLanguage()
   const contacts = [
-    ["01", t("phone"), t("placeholderPhone"), t("availability")],
-    ["02", t("email"), t("placeholderEmail"), "B2B / wholesale"],
-    ["03", t("address"), t("placeholderAddress"), "Praha, Česká republika"],
+    [t("phone"), t("placeholderPhone"), t("availability")],
+    [t("email"), t("placeholderEmail"), "B2B / wholesale"],
+    [t("address"), t("placeholderAddress"), "Praha, Česká republika"],
   ]
 
   return (
@@ -21,10 +21,9 @@ export default function ContactPage() {
         />
 
         <section className="grid gap-px overflow-hidden rounded-[2rem] bg-[#173f35]/10 my-8 lg:grid-cols-3">
-          {contacts.map(([number, label, value, note]) => (
-            <article key={number} className="bg-white/75 p-7 sm:p-8">
-              <span className="text-xs font-black tracking-[0.18em] text-[#c26a45]">{number}</span>
-              <h2 className="mt-6 text-sm font-bold uppercase tracking-[0.14em] text-[#718078]">{label}</h2>
+          {contacts.map(([label, value, note]) => (
+            <article key={label} className="bg-white/75 p-7 sm:p-8">
+              <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-[#718078]">{label}</h2>
               <p className="mt-3 text-xl font-semibold text-[#173f35]">{value}</p>
               <p className="mt-2 text-sm text-[#60736c]">{note}</p>
             </article>
