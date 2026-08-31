@@ -1,0 +1,54 @@
+services:
+  database:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${MATRO_DB_NAME:-matro_wordpress}
+      MARIADB_USER: ${MATRO_DB_USER:-matro}
+      MARIADB_PASSWORD: ${MATRO_DB_PASSWORD:-matro_local_password}
+      MARIADB_ROOT_PASSWORD: ${MATRO_DB_ROOT_PASSWORD:-matro_local_root_password}
+    volumes:
+      - matro_db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  wordpress:
+    image: wordpress:php8.2-apache
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${MATRO_WP_PORT:-8080}:80"
+    environment:
+      WORDPRESS_DB_HOST: database:3306
+      WORDPRESS_DB_NAME: ${MATRO_DB_NAME:-matro_wordpress}
+      WORDPRESS_DB_USER: ${MATRO_DB_USER:-matro}
+      WORDPRESS_DB_PASSWORD: ${MATRO_DB_PASSWORD:-matro_local_password}
+      WORDPRESS_DEBUG: ${MATRO_WP_DEBUG:-1}
+    volumes:
+      - matro_wp_data:/var/www/html
+      - ./wp-content/themes/matro:/var/www/html/wp-content/themes/matro
+
+  wpcli:
+    image: wordpress:cli-php8.2
+    depends_on:
+      database:
+        condition: service_healthy
+      wordpress:
+        condition: service_started
+    environment:
+      WORDPRESS_DB_HOST: database:3306
+      WORDPRESS_DB_NAME: ${MATRO_DB_NAME:-matro_wordpress}
+      WORDPRESS_DB_USER: ${MATRO_DB_USER:-matro}
+      WORDPRESS_DB_PASSWORD: ${MATRO_DB_PASSWORD:-matro_local_password}
+    volumes:
+      - matro_wp_data:/var/www/html
+      - ./wp-content/themes/matro:/var/www/html/wp-content/themes/matro
+
+volumes:
+  matro_db_data:
+  matro_wp_data:

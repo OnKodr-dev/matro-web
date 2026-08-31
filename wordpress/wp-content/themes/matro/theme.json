@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        { "slug": "forest", "name": "MATRO tmavě zelená", "color": "#173f35" },
+        { "slug": "cream", "name": "MATRO krémová", "color": "#f6f2e8" },
+        { "slug": "lime", "name": "MATRO světle zelená", "color": "#dce9b6" },
+        { "slug": "terracotta", "name": "MATRO oranžová", "color": "#e5794b" },
+        { "slug": "white", "name": "Bílá", "color": "#ffffff" }
+      ]
+    },
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1280px"
+    },
+    "spacing": {
+      "units": ["px", "rem", "%", "vw"]
+    },
+    "typography": {
+      "fluid": true
+    }
+  }
+}
+

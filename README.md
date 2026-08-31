@@ -14,6 +14,8 @@ Tato verze je frontendový prototyp postavený v Reactu. Obsahuje:
 
 Zatím zde **není databáze ani administrační panel**. Produkty, kontakty a texty se nyní upravují přímo v souborech popsaných níže. Převod do WordPressu a správa přes `/wp-admin` jsou plánovaný další krok.
 
+Vedle React prototypu je nově připravená samostatná WordPress varianta ve složce [`wordpress/`](wordpress/README.md). Obsahuje vlastní administraci produktů, kategorií, fotografií, B2B údajů, kontaktů a hlavních CZ/EN textů. Produkční React web tím zatím není nahrazený.
+
 Produktové fotografie, ceny a některé kontaktní údaje jsou ukázkové placeholdery a před zveřejněním se musí nahradit finálními daty.
 
 ## Použité technologie
@@ -64,6 +66,21 @@ Pokud už je složka `node_modules` nainstalovaná, stačí pouze:
 ```bash
 npm run dev
 ```
+
+### WordPress verze s administrací
+
+S Docker Desktopem ji lze spustit paralelně na portu 8080:
+
+```bash
+cd /Users/ondrejkodr/Documents/GitHub/Matro/wordpress
+docker compose up -d
+```
+
+Web: `http://localhost:8080`
+
+Administrace: `http://localhost:8080/wp-admin`
+
+Kompletní instalace a práce s administrací jsou popsané v [`wordpress/README.md`](wordpress/README.md).
 
 ### Otevření webu z jiného zařízení v síti
 

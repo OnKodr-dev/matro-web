@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">MATRO produkt</title>
+  <desc id="desc">Zástupný obrázek produktu</desc>
+  <rect width="1200" height="900" fill="#e8eadb"/>
+  <path d="M600 215c-112 91-179 191-179 300 0 116 80 193 179 193s179-77 179-193c0-109-67-209-179-300Z" fill="#dce9b6"/>
+  <path d="M600 325v286M600 455c-73-47-124-54-171-39M600 505c78-54 134-66 184-50" fill="none" stroke="#173f35" stroke-width="18" stroke-linecap="round"/>
+  <text x="600" y="790" text-anchor="middle" font-family="Arial, sans-serif" font-size="55" font-weight="700" fill="#173f35">MATRO</text>
+</svg>
+
